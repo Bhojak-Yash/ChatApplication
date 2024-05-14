@@ -1,8 +1,28 @@
-FROM maven:3.8.8-openjdk-21-slim AS build
-COPY . .
-RUN mvn clean package -DskipTests
+# Use the official JDK 21 base image
+FROM openjdk:21-jdk-slim
 
-FROM openjdk:21-slim
-COPY --from=build /target/chatroomapp-0.0.1-SNAPSHOT.jar chatroomapp.jar
-EXPOSE 9090
-ENTRYPOINT ["java", "-jar", "chatroomapp.jar"]
+# Set the working directory in the container
+WORKDIR /app
+
+# Install Maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy the Maven project files to the container
+COPY pom.xml .
+
+# Download the dependencies
+RUN mvn dependency:go-offline
+
+# Copy the rest of the application source code to the container
+COPY src ./src
+
+# Build the application
+RUN mvn package -DskipTests
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the application
+CMD ["java", "-jar", "target/chatroomapp.jar"]

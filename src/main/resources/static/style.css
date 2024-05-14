@@ -1,0 +1,57 @@
+#name-value {
+    background-color: #444;
+    color: #fff;
+}
+
+#message-value {
+    background-color: #444;
+    color: #fff;
+}
+
+#logo {
+    text-align: center;
+    /* Center the image horizontally */
+    margin-bottom: 20px;
+    /* Add spacing between the logo and "Enter the name" column */
+}
+
+#logo img {
+    max-width: 100%;
+    /* Make sure the image fits within its container */
+}
+
+
+#name-from {
+    background-image: url("./Images/1.png");
+}
+
+body {
+    background-image: url("./Images/1.jpg")
+}
+
+
+#login {
+    background-color: rgb(9, 92, 33);
+}
+
+#login:hover {
+    background-color: rgb(3, 60, 19);
+}
+
+
+#send-btn {
+    background-color: rgb(9, 92, 33);
+}
+
+#send-btn:hover {
+    background-color: rgb(3, 60, 19);
+}
+
+
+#logout {
+    background-color: rgb(165, 5, 5);
+}
+
+#logout:hover {
+    background-color: rgb(99, 12, 12);
+}
